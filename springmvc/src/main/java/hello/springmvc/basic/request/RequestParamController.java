@@ -79,4 +79,10 @@ public class RequestParamController {
     public String modelAttributeV1(@ModelAttribute HelloData helloData) { // 요청 파라미터 값이 모두 들어있다. 바인딩을 못하면 익셉션이 터진다.
         return "ok";
     }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v2")
+    public String modelAttributeV2(HelloData helloData) {  // String int integer = requestParam, 나머지는 modelAttribute
+        return "ok";
+    }
 }
