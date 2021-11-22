@@ -3,10 +3,7 @@ package hello.login.domain.member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Repository
@@ -25,7 +22,19 @@ public class MemberRepository {
     public Member findById(Long id) {
         return store.get(id);
     }
+
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public Optional<Member> findByLoginId(String loginId) {
+        List<Member> all = findAll();
+        return all.stream()
+                .filter(m -> m.getLoginId().equals(loginId))
+                .findFirst();
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
