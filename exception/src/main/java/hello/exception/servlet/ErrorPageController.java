@@ -41,6 +41,6 @@ public class ErrorPageController {
         result.put("status", request.getAttribute(ERROR_STATUS_CODE));
         result.put("message", ex.getMessage());
         Integer statusCode = (Integer) request.getAttribute(ERROR_STATUS_CODE);
-        return new ResponseEntity<>(result, HttpStatus.valueOf(statusCode));
+        return new ResponseEntity(result, HttpStatus.valueOf(statusCode));
     }
 }
